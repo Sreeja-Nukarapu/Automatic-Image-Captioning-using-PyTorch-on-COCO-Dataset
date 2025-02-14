@@ -1,9 +1,9 @@
 # Automatic Image Captioning using PyTorch on COCO Dataset  
 
 ## Project Overview  
-This project focuses on generating captions for images using a neural network architecture that combines Convolutional Neural Networks (CNNs) as the Encoder and Long Short-Term Memory (LSTM) networks as the Decoder. The model is trained on the Microsoft Common Objects in Context [(MS COCO)](http://cocodataset.org/#home) dataset.  
+This project focuses on generating captions for images using a neural network architecture that combines Convolutional Neural Networks (CNNs) as the Encoder and Recurrent Neural Network(RNN) networks as the Decoder. The model is trained on the Microsoft Common Objects in Context [(MS COCO)](http://cocodataset.org/#home) dataset.  
 
-The architecture follows the encoder-decoder approach, where the CNN encoder extracts image features, and the LSTM decoder generates captions word by word. This project is inspired by the paper "[Show and Tell: A Neural Image Caption Generator](https://arxiv.org/pdf/1411.4555.pdf)".  
+The architecture follows the encoder-decoder approach, where the CNN encoder extracts image features, and the RNN decoder generates captions word by word. This project is inspired by the paper "[Show and Tell: A Neural Image Caption Generator](https://arxiv.org/pdf/1411.4555.pdf)".  
 
 ![Image Captioning Model](images/arch.png?raw=true)  
 
@@ -80,14 +80,14 @@ cocoapi/
 ## Model Architecture  
 The image captioning model employs an **Encoder-Decoder** architecture:  
 - **Encoder**: A pre-trained ResNet CNN extracts image features. The last fully connected layer is replaced with a new trainable layer for compatibility with the RNN decoder.  
-- **Decoder**: An LSTM network generates captions using the encoded image features and previous words.  
+- **Decoder**: An RNN network generates captions using the encoded image features and previous words.  
 
 ![Encoder-Decoder Architecture](images/archmodel.png)  
 
 ### Key Features:  
 - **Pre-trained ResNet50**: As the CNN encoder, leveraging pre-learned features from ImageNet.  
-- **LSTM Decoder**: Captions are generated word by word using the hidden states and image features.  
-- **Embedding Layer**: Both image features and words are embedded to the same dimension (`embed_size`) before being fed into the LSTM.  
+- **RNN Decoder**: Captions are generated word by word using the hidden states and image features.  
+- **Embedding Layer**: Both image features and words are embedded to the same dimension (`embed_size`) before being fed into the RNN.  
 
 ### Training Details:  
 - **Loss Function**: Cross Entropy Loss for caption generation.  
